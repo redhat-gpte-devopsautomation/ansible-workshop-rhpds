@@ -78,6 +78,8 @@
   run_once: true
   become: no
   when:
+    - towerinstall is defined
+    - towerinstall|bool
     - autolicense is defined
     - autolicense|bool
 
@@ -91,7 +93,10 @@
     body_format: json
     validate_certs: False
     force_basic_auth: yes
+  ignore_errors: true
   when:
+    - towerinstall is defined
+    - towerinstall|bool
     - autolicense is defined
     - autolicense|bool
 
